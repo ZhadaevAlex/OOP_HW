@@ -20,14 +20,14 @@ public:
     }
 };
 
-class PassengerCar : public Car {
+class PassengerCar : virtual public Car {
 public:
     PassengerCar(string c, string m) : Car(c, m) {
         cout << "Конструктор класса PassengerCar" << endl;
     }
 };
 
-class Bus : public Car {
+class Bus : virtual public Car {
 public:
     Bus(string c, string m) : Car(c, m) {
         cout << "Конструктор класса Bus" << endl;
@@ -36,7 +36,7 @@ public:
 
 class Minivan : public PassengerCar, public Bus {
 public:
-    Minivan(string c, string m) : PassengerCar(c, m), Bus(c, m) {
+    Minivan(string c, string m) : PassengerCar(c, m), Bus(c, m), Car(c, m) {
         cout << "Конструктор класса Minivan" << endl;
     }
 };
@@ -59,7 +59,7 @@ int main()
     Minivan minivan("ЗАЗ", "968");
     cout << endl;
 
-    //Действительно, конструктор класса Car при создании объекта класса Minivan вызывается 2 раза
+    //Действительно, без ключевого слова virtual при наследовании, конструктор класса Car при создании объекта класса Minivan вызывается 2 раза
 
     return 0;
 }
