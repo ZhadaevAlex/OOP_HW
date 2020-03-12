@@ -17,7 +17,7 @@ enum Suit { //Масть
 
 enum Rank { //Достоинство
     ace = 1,
-    two = 2,
+    two,
     three,
     four,
     five,
@@ -53,7 +53,7 @@ public:
 int main()
 {
     Suit suit = clubs;
-    Rank rank = king;
+    Rank rank = four;
     bool faceUp = true;
 
     Card card(suit, rank, faceUp);
