@@ -18,13 +18,13 @@ enum Suit { //Масть
 enum Rank { //Достоинство
     ace = 1,
     two = 2,
-    three = 3,
-    four = 4,
-    five = 5,
-    six = 6,
-    seven = 7,
-    eight = 8,
-    nine = 9,
+    three,
+    four,
+    five,
+    six,
+    seven,
+    eight,
+    nine,
     ten = 10,
     jack = 10,
     queen = 10,
@@ -36,20 +36,33 @@ class Card {
     Rank rank;
     bool faceUp;
 public:
-    Card(Suit s, Rank r) : suit(s), rank(r) {}
+    Card(Suit s, Rank r, bool f) : suit(s), rank(r), faceUp(f) {}
 
-    bool Flip() {
-        return !faceUp;
+    void Flip() {
+         faceUp = !faceUp;
     }
 
     int GetValue() {
-        return rank;
+        if (faceUp) return rank;
+
+        cout << "Положение карты: вверх рубашкой" << endl;
+        return 0;
     }
 };
 
 int main()
 {
-    Card card(Suit::clubs, Rank::king);
+    Suit suit = clubs;
+    Rank rank = king;
+    bool faceUp = true;
+
+    Card card(suit, rank, faceUp);
+
+    cout << card.GetValue() << endl;
+    cout << endl;
+
+    cout << "Перевернем карту" << endl;
+    card.Flip();
 
     cout << card.GetValue() << endl;
 
