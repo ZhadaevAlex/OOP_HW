@@ -26,7 +26,7 @@ using namespace std;
 //std::vector<int> plus(const std::vector<int> &A, int baseA, const std::vector<int> &B, int baseB, int baseResult);
 
 //Перевод из любой СС в десятичную
-int anyToDec(vector<int> number, int base) {
+int anyToDec(const vector<int> number, const int base) {
     int result = 0;
 
     unsigned long j = number.size() - 1;
@@ -39,21 +39,21 @@ int anyToDec(vector<int> number, int base) {
 }
 
 //Перевод из десятичной СС в любую
-vector<int> decToAny(int number, int base) {
+vector<int> decToAny(const int number, const int base) {
     vector<int> result;
-
+    int r = number;
     do {
         auto it = result.begin();
-        int bit = number % base;
-        number /= base;
+        int bit = r % base;
+        r /= base;
         result.insert(it, bit);
     }
-    while(number > 0);
+    while(r > 0);
 
     return result;
 }
 
-vector<int> Plus(const vector<int> &A, int baseA, const vector<int> &B, int baseB, int baseResult) {
+vector<int> Plus(const vector<int> &A, int baseA, const vector<int> &B, const int baseB, const int baseResult) {
     int AIntDec = anyToDec(A, baseA);
     int BIntDec = anyToDec(B, baseB);
     int CIntDec = AIntDec + BIntDec;
