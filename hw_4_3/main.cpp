@@ -53,7 +53,7 @@ public:
          faceUp = !faceUp;
     }
 
-    int GetValue() {
+    int GetValue() const {
         if (faceUp) return rank;
 
         cout << "Положение карты: вниз рубашкой" << endl;
@@ -71,10 +71,16 @@ public:
     }
 
     void Clear() {
+        vector<Card*>::iterator it = cards.begin();
+
+        for(; it < cards.end(); it++) {
+            delete *it;
+        }
+
         cards.clear();
     }
 
-    int GetValue() {
+    int GetValue() const {
         int sum = 0;
         for(unsigned int i = 0; i < cards.size(); i++) {
             if (cards[i]->GetValue() == Rank::ace) {
@@ -117,7 +123,6 @@ int main()
     hand.Add(new Card(Suit::clubs, Rank::four, true));
     hand.Add(new Card(Suit::clubs, Rank::seven, true));
     hand.Add(new Card(Suit::clubs, Rank::ace, true));
-
     cout << hand.GetValue() << endl;
     hand.Clear();
 

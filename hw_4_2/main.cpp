@@ -14,8 +14,10 @@ unsigned long diff(vector<int>& v) {
         for (unsigned long j = i; j != 0; j--) {
             if (v[i] == v[j - 1]) {
                 result = 0;
+                break;
             }
         }
+
         count += result;
     }
 
