@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 
 using namespace std;
 
@@ -21,7 +22,14 @@ int main()
 
         getline(cin, str);
 
+        if (str.length() == 0)
+            continue;
+
         for (unsigned i = 0; i < str.length(); i++) {
+            if (str[i] == '-' || str[i] == '+') {
+                continue;
+            }
+
             if (!isdigit(str[i])) {
                 flag = false;
                 break;
@@ -30,6 +38,24 @@ int main()
 
         if (flag)
             break;
+    }
+
+    cout << "Используем регулярные выражения" << endl;
+
+    cmatch result;
+
+    regex regular("^-{0,1}\\d+$");
+
+    while(1) {
+        cout << "Введите целое число: ";
+
+        getline(cin, str);
+
+        if (str.length() == 0 || !regex_match(str.c_str(), result, regular)) {
+            continue;
+        }
+
+        break;
     }
 
     return 0;

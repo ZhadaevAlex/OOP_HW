@@ -220,15 +220,11 @@ public:
     virtual ~House() override {}
 
     bool IsHitting() override {
-        if (GetValue() <= 16) {
-            return true;
-        }
-
-        return false;
+        return GetValue() <= 16;
     }
 
     void FlipFirstCard() {
-        if (cards.size() == 1) {
+        if (!cards.empty() && cards.size() == 1) {
             cards[0]->Flip();
         }
     }
