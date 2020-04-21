@@ -26,7 +26,7 @@ int main()
             continue;
 
         for (unsigned i = 0; i < str.length(); i++) {
-            if (str[i] == '-' || str[i] == '+') {
+            if (i == 0 && (str[i] == '-' || str[i] == '+')) {
                 continue;
             }
 
